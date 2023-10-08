@@ -1,93 +1,55 @@
 import pygame
-#############################
-#                                                     #
-#############################
+fontType = None
 
 pygame.init()
+run = True
 
-screenwidth = 800
-screenheight = 600
+screen = pygame.display.set_mode((800, 600))
 
-screen = pygame.display.set_mode((screenwidth, screenheight))
+pygame.display.set_caption("Set my name!!")
+
 clock = pygame.time.Clock()
-running = True
+
+#Piece of Shit
+test_font = pygame.font.Font(fontType, 50)
+text_surface = test_font.render('My Game', None, 'red')
+
+qr = pygame.mixer.music.load('vtm.mp3')
+# End of Shit, loaded music file for main menu.
 
 
-pygame.display.set_caption("TEST PROJECT")
 
-walkRight = [pygame.image.load('PythonProject/R1.png'), pygame.image.load('PythonProject/R2.png'), pygame.image.load('PythonProject/R3.png'), pygame.image.load('PythonProject/R4.png'), pygame.image.load('PythonProject/R5.png'), pygame.image.load('PythonProject/R6.png'), pygame.image.load('PythonProject/R7.png'), pygame.image.load('PythonProject/R8.png'), pygame.image.load('PythonProject/R9.png')]
-walkLeft = [pygame.image.load('PythonProject/L1.png'), pygame.image.load('PythonProject/L2.png'), pygame.image.load('PythonProject/L3.png'), pygame.image.load('PythonProject/L4.png'), pygame.image.load('PythonProject/L5.png'), pygame.image.load('PythonProject/L6.png'), pygame.image.load('PythonProject/L7.png'), pygame.image.load('PythonProject/L8.png'), pygame.image.load('PythonProject/L9.png')]
-bg = pygame.image.load('PythonProject/bg.jpg')
-char = pygame.image.load('PythonProject/standing.png')
+class Character:
 
-x = 40
-y=  400
-width = 64
-height = 64
-vel = 5
+    def __init__(self):
+        self.x = 45
+        self.y = 45
 
-isJump = False
-jumpCount = 10
+class Canvas():
 
-left = False
-right = False
-walkCount = 0
+    def __init__(self):   
+        self.canvas1 = pygame.image.load('WhiteWolfLogo.png')
 
-def redrawGameWindow():
-    global walkCount
 
-    screen.blit(bg, (0,0))
-
-    if walkCount +1 >= 27:
-        walkCount = 0
         
-    if left:
-        screen.blit(walkLeft[walkCount//3], (x,y))
-        walkCount += 1
-    elif right:
-        screen.blit(walkRight[walkCount//3], (x,y))
-        walkCount += 1
-    else:
-        screen.blit(char, (x,y))
-        
-    pygame.display.update()
+bg = Canvas()
 
-while running:
+screen.blit(bg.canvas1, (100,50))
+pygame.display.flip()
+pygame.time.wait(2000)
+pygame.mixer.music.play()
+
+
+while run == True:
+    #Prelude
+    pygame.display.flip()
+    screen.fill((0,0,0))
+  
+    screen.blit(text_surface, (350,250))
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
-
-    keys = pygame.key.get_pressed()
-    if not(isJump):
-        if keys[pygame.K_SPACE]:
-            isJump = True
-            right = False
-            left = False
-    else:
-            if jumpCount >= -10:
-                y -= (jumpCount * abs(jumpCount)) * 0.5
-                jumpCount -= 1
-                right = False
-                left = False
-            else:
-                jumpCount = 10
-                isJump = False
-                
-    if keys[pygame.K_a] and x > 0:
-        x -= vel
-        left = True
-        right = False
-    elif keys[pygame.K_d] and x < screenwidth - width:
-        x += vel
-        right = True
-        left = False
-    else:
-        right = False
-        left = False
-        walkCount = 0
-
-    redrawGameWindow()
-    pygame.display.update()
-    dt = clock.tick(60) / 1000
-
+            run = False
+        
 pygame.quit()
+exit()
