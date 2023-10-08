@@ -1,5 +1,5 @@
 import pygame
-fontType = None
+import python2
 
 pygame.init()
 run = True
@@ -10,28 +10,15 @@ pygame.display.set_caption("Set my name!!")
 
 clock = pygame.time.Clock()
 
+from python2 import Canvas, Character
+
 #Piece of Shit
-test_font = pygame.font.Font(fontType, 50)
+test_font = pygame.font.Font(None, 50)
 text_surface = test_font.render('My Game', None, 'red')
 
 qr = pygame.mixer.music.load('vtm.mp3')
 # End of Shit, loaded music file for main menu.
 
-
-
-class Character:
-
-    def __init__(self):
-        self.x = 45
-        self.y = 45
-
-class Canvas():
-
-    def __init__(self):   
-        self.canvas1 = pygame.image.load('WhiteWolfLogo.png')
-
-
-        
 bg = Canvas()
 
 screen.blit(bg.canvas1, (100,50))
