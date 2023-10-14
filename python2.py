@@ -15,5 +15,6 @@ class Canvas():
     def __init__(self):
         super().__init__()
         self.canvas1 = pygame.image.load('WhiteWolfLogo.png')
+        self.canvas2 = pygame.image.load('BackgroundMenu.png') 
 
 
