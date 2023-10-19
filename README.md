@@ -2,5 +2,4 @@
 
 #In Progress..
 
-![obraz](https://github.com/MatrixVI7/PythonGame/assets/146598404/5b698fbe-b724-4afe-b220-a89daf276271)
-
+![Screenshot_2](https://github.com/MatrixVI7/Pygame-Game-Menu-Project/assets/146598404/da9bbc2c-8496-40b2-80ca-79fed689fd27)
