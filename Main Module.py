@@ -50,5 +50,5 @@ while run == True:
                 screen.blit(text_s4, (250,150))
         elif event.type == pygame.QUIT:
             pygame.quit()
-            run == False
+            run = False
 exit()
